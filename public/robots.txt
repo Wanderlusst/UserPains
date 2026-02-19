@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://zynva.com/sitemap.xml
+Sitemap: https://user-pains-k4ai.vercel.app/sitemap.xml

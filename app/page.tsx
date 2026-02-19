@@ -4,7 +4,6 @@ import { useState } from 'react'
 import Hero from '@/components/Hero'
 import ProgressBar from '@/components/ProgressBar'
 import GlowForm from '@/components/GlowForm'
-import ZynvaLogo from '@/components/ZynvaLogo'
 
 const TOTAL = 7
 
@@ -24,11 +23,6 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen overflow-x-hidden font-mono">
-      {/* ── Logo in header/title area ── */}
-      <div className="fixed top-6 left-6 z-20 flex items-center gap-2">
-        <ZynvaLogo size={32} />
-        <span className="font-playfair text-deep text-lg font-semibold">Zynva</span>
-      </div>
 
       {/* ── Animated blobs ── */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
@@ -70,7 +64,7 @@ export default function Home() {
       {/* ── Float tag ── */}
       <div className="fixed bottom-7 right-7 z-10 text-[10px] tracking-[2px] px-4 py-2 rounded-full opacity-85"
         style={{ background: '#2C0A09', color: '#FCDAD9', boxShadow: '0 4px 14px rgba(44,10,9,0.20)' }}>
-        ZYNVA • BETA
+        BETA
       </div>
     </main>
   )

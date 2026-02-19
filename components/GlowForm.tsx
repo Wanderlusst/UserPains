@@ -3,7 +3,6 @@
 import { useCallback, useRef, useState } from 'react'
 import dynamic from 'next/dynamic'
 import { QUESTIONS, PAIN_LABELS, FEATURES, type Option } from '@/lib/data'
-import ZynvaLogo from './ZynvaLogo'
 
 // Load canvas face client-side only (uses browser APIs)
 const MoodCanvas = dynamic(() => import('./MoodCanvas'), { ssr: false })
@@ -155,9 +154,6 @@ export default function GlowForm({ onQuestionChange }: GlowFormProps) {
   if (submitted) {
     return (
       <div className="animate-slide-up text-center px-8 py-14">
-        <div className="flex justify-center mb-6">
-          <ZynvaLogo size={64} />
-        </div>
         <p className="text-[12px] text-muted leading-[1.9] max-w-[400px] mx-auto mb-8">
           We've captured your pain points. Our team is already plotting the perfect SaaS solution for aesthetic clinics like yours. Stay tuned.
         </p>
@@ -166,7 +162,7 @@ export default function GlowForm({ onQuestionChange }: GlowFormProps) {
           className="rounded-3xl p-7 text-left max-w-[480px] mx-auto border border-border"
           style={{ background: 'rgba(255,255,255,0.80)', backdropFilter: 'blur(20px)', boxShadow: '0 4px 32px rgba(44,10,9,0.08)' }}
         >
-          <h3 className="font-playfair text-[1.15rem] text-deep mb-1.5">Coming Soon: Zynva</h3>
+          <h3 className="font-playfair text-[1.15rem] text-deep mb-1.5">Coming Soon</h3>
           <p className="text-[11px] text-muted leading-[1.8] mb-5">
             The all-in-one operating system built exclusively for aesthetic clinics. We're turning your pain points into features.
           </p>

@@ -9,10 +9,10 @@ import {
 
 export const metadata: Metadata = {
   title: {
-    default: 'Zynva — We Feel Your Pain',
-    template: '%s | Zynva',
+    default: 'We Feel Your Pain',
+    template: '%s',
   },
-  description: 'Tell us what\'s killing your clinic\'s growth and we\'ll build the SaaS to fix it. Zynva is the all-in-one operating system built exclusively for aesthetic clinics.',
+  description: 'Tell us what\'s killing your clinic\'s growth and we\'ll build the SaaS to fix it. The all-in-one operating system built exclusively for aesthetic clinics.',
   keywords: [
     'aesthetic clinic software',
     'clinic management system',
@@ -25,9 +25,6 @@ export const metadata: Metadata = {
     'clinic operations software',
     'aesthetic clinic solutions',
   ],
-  authors: [{ name: 'Zynva' }],
-  creator: 'Zynva',
-  publisher: 'Zynva',
   formatDetection: {
     email: false,
     address: false,
@@ -50,24 +47,23 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: '/',
-    siteName: 'Zynva',
-    title: 'Zynva — We Feel Your Pain',
+    siteName: 'User Pains',
+    title: 'We Feel Your Pain',
     description: 'Tell us what\'s killing your clinic\'s growth and we\'ll build the SaaS to fix it. The all-in-one operating system built exclusively for aesthetic clinics.',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Zynva - Aesthetic Clinic Management Software',
+        alt: 'Aesthetic Clinic Management Software',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Zynva — We Feel Your Pain',
+    title: 'We Feel Your Pain',
     description: 'Tell us what\'s killing your clinic\'s growth and we\'ll build the SaaS to fix it.',
     images: ['/og-image.png'],
-    creator: '@zynva',
   },
   robots: {
     index: true,
