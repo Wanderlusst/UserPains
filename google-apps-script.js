@@ -16,10 +16,19 @@ function doPost(e) {
     // Handle different data formats
     var data;
     if (e.postData && e.postData.contents) {
+      // JSON sent directly with Content-Type: application/json
       data = JSON.parse(e.postData.contents);
     } else if (e.parameter && e.parameter.data) {
-      data = JSON.parse(e.parameter.data);
+      // Form-encoded data - may be URL-encoded, try to decode first
+      try {
+        var decodedData = decodeURIComponent(e.parameter.data);
+        data = JSON.parse(decodedData);
+      } catch (err) {
+        // If decode fails, try parsing directly
+        data = JSON.parse(e.parameter.data);
+      }
     } else {
+      // Direct parameters
       data = e.parameter || {};
     }
 

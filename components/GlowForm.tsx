@@ -70,34 +70,37 @@ export default function GlowForm({ onQuestionChange }: GlowFormProps) {
     
     const finalAnswers = { ...answers, name, email, clinic }
     
-    // Get Google Apps Script URL from environment variable
-    const scriptUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL
-    
-    if (scriptUrl && scriptUrl !== 'YOUR_WEB_APP_URL_HERE') {
-      setSubmitting(true)
-      try {
-        console.log('Submitting to:', scriptUrl)
-        console.log('Data being sent:', finalAnswers)
-        
-        const response = await fetch(scriptUrl, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(finalAnswers),
-        })
-        
-        console.log('✅ Data submitted to Google Sheets')
-      } catch (err) {
-        console.error('Error submitting form:', err)
+    setSubmitting(true)
+    try {
+      console.log('Submitting form data:', finalAnswers)
+      
+      // Submit to Next.js API route (which forwards to Google Apps Script)
+      const response = await fetch('/api/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(finalAnswers),
+      })
+      
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ error: 'Unknown error' }))
+        console.error('❌ Submission failed:', response.status, errorData.error || errorData.details)
         // Continue anyway - show success UI even if submission fails
-      } finally {
-        setSubmitting(false)
+      } else {
+        const result = await response.json()
+        if (result.success) {
+          console.log('✅ Data submitted successfully to Google Sheets')
+        } else {
+          console.error('❌ Submission failed:', result.error)
+          // Continue anyway - show success UI even if submission fails
+        }
       }
-    } else {
-      console.warn('Google Apps Script URL not configured. Add NEXT_PUBLIC_GOOGLE_SCRIPT_URL to .env.local')
-      console.log('Submitted (local only):', finalAnswers)
+    } catch (err) {
+      console.error('Error submitting form:', err)
+      // Continue anyway - show success UI even if submission fails
+    } finally {
+      setSubmitting(false)
     }
     
     burst()
